@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "mixlib-json"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{Selects best-available JSON library, and provides a common API.}
+    gem.description = %Q{Selects best-available JSON library, and provides a common API.}
     gem.email = "adam@opscode.com"
     gem.homepage = "http://github.com/adamhjk/mixlib-json"
     gem.authors = ["Adam Jacob"]

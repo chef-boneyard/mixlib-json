@@ -1,6 +1,31 @@
-= mixlib-json
+= Mixlib::JSON
 
-Description goes here.
+Mixlib::JSON handles choosing a JSON serialization library, and then using that
+library consistently.  
+
+It has the following preferences:
+
+  * YAJL-Ruby
+  * Json Gem
+  * ActiveSupport
+
+It will first check to see if any of the above libraries are already loaded in memory - if so, it will use it.  If not, it will attempt to load each library in order, and use it for serialzation.
+
+The API is simple:
+
+  require 'mixlib/json'
+  Mixlib::JSON.encode({ :one => :two }) # Returns a JSON string
+  Mixlib::JSON.pretty({ :one => :two }) # Returns a JSON string, pretty formatted
+  Mixlib::JSON.decode('{"one":"two"}')  # Decodes a JSON string
+
+One feature of this library is that it can handle JSON gem style object
+inflation.  If your JSON data contains json_class, the class it refers to
+exists, and it has a from_json class method, we will pass the inflated object
+to that method.  To enable this functionality, do the following:
+
+  Mixlib::JSON.create_objects = true
+
+Before you decode a JSON object.
 
 == Note on Patches/Pull Requests
  
@@ -12,6 +37,21 @@ Description goes here.
   (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
 
-== Copyright
+== Copyright and Licensing
 
-Copyright (c) 2010 Adam Jacob. See LICENSE for details.
+Author:: Adam Jacob (<adam@opscode.com>)
+Copyright:: Copyright (c) 2010 Opscode, Inc.
+License:: Apache License, Version 2.0
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
