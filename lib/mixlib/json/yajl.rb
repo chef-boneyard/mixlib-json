@@ -16,7 +16,7 @@
 # limitations under the License.
 #
 
-class Mixlib
+module Mixlib
   class JSON
     class YAJL
       class << self

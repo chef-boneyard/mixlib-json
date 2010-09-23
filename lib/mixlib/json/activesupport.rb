@@ -20,7 +20,7 @@
 # department.  ActiveSupport uses Yajl, the JSON gem, or YAML behind the
 # scenes.
 
-class Mixlib
+module Mixlib
   class JSON
     class ActiveSupport
       class << self

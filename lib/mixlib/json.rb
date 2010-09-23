@@ -20,7 +20,7 @@ require 'mixlib/json/yajl'
 require 'mixlib/json/gem'
 require 'mixlib/json/activesupport'
 
-class Mixlib
+module Mixlib
   class JSON
     class << self
       attr_reader :json_obj
@@ -120,7 +120,7 @@ class Mixlib
       def parse(data)
         select_json_library unless @json_obj
         o = @json_obj.parse(data)
-        if @create_objects
+        if @create_objects && o.kind_of?(Hash) 
           if o.has_key?("json_class")
             class_name = o["json_class"].split('::').inject(Kernel) do |scope, const_name| 
               scope.const_get(const_name)
